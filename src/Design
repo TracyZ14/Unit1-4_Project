@@ -1,0 +1,22 @@
+Encoder class
+Instance variables:
+1. private String originalMessage -> message before encryption
+Constructors:
+1. public Encoder(String originalMessage)
+   Initialize the private String variable originalMessage to the value of the parameter.
+Methods:
+1. public String atbashEncoder()
+   Initialize the String encryptedMessage as an empty String.
+   Initialize the array originalLetters with all the letters in uppercase in alphabetical order for the elements.
+   Initialize the array encryptedLetters with all the letters in uppercase in the reverse of alphabetical order for the elements.
+   Use a for loop with the initialization int index = 0, the test condition index is less than the length of the String originalMessage, and the increment of 1 to index every loop.
+      Initialize the String letter as the substring of the String originalMessage with the beginning index as index and the end index as index plus 1.
+      Initialize the int arrayIndex to 0.
+
+
+Decoder class
+Instance variables:
+1. private String originalMessage -> message before decryption
+Constructors:
+1. public Decoder(String originalMessage)
+   Initialize the private String variable original Message to the value of the parameter.

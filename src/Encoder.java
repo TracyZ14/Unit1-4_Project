@@ -1,8 +1,6 @@
 public class Encoder
 {
     private String originalMessage;
-    private String[] lowerCaseLetters = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
-    private String[] upperCaseLetters = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
 
     public Encoder(String originalMessage)
     {
@@ -18,14 +16,23 @@ public class Encoder
         {
             String letter = originalMessage.substring(index, index + 1);
             int arrayIndex = 0;
-            for(int i = 0; i < 25; i++)
+            boolean isLetter = false;
+            for(int i = 0; i < 26; i++)
             {
                 if(originalLetters[i].equals(letter))
                 {
                     arrayIndex = i;
+                    isLetter = true;
                 }
             }
-            encryptedMessage = encryptedMessage + encryptedLetters[arrayIndex];
+            if(isLetter == false)
+            {
+                encryptedMessage = encryptedMessage + letter;
+            }
+            else
+            {
+                encryptedMessage = encryptedMessage + encryptedLetters[arrayIndex];
+            }
         }
         return encryptedMessage;
     }
@@ -38,15 +45,24 @@ public class Encoder
         {
             String letter = originalMessage.substring(index, index + 1);
             int arrayIndex = 0;
+            boolean isLetter = false;
             for(int i = 0; i < 25; i++)
             {
                 if(originalLetters[i].equals(letter))
                 {
                     arrayIndex = i;
+                    isLetter = true;
                 }
             }
-            int shiftedLetterIndex = (arrayIndex + shift) % 26;
-            encryptedMessage = encryptedMessage + originalLetters[shiftedLetterIndex];
+            if(isLetter == false)
+            {
+                encryptedMessage = encryptedMessage + letter;
+            }
+            else
+            {
+                int shiftedLetterIndex = (arrayIndex + shift) % 26;
+                encryptedMessage = encryptedMessage + originalLetters[shiftedLetterIndex];
+            }
         }
         return encryptedMessage;
     }
