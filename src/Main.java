@@ -22,21 +22,26 @@ public class Main {
                 System.out.println("  '1' for atbash");
                 System.out.println("  '2' for caesar cipher");
                 cipherNumber = Integer.parseInt(s.nextLine());
+                System.out.println();
                 System.out.print("Enter the message you want to encrypt: ");
-                Encoder message = new Encoder(s.nextLine());
+                String message = s.nextLine();
+                Encoder originalMessage = new Encoder(message);
+                System.out.println();
                 if(cipherNumber == 1)
                 {
-                    changedMessage = message.atbashEncoder();
+                    changedMessage = originalMessage.atbashEncoder();
                     cipher = "Atbash";
                 }
                 if(cipherNumber == 2)
                 {
                     System.out.print("Enter the number of letters you want to shift by: ");
                     int shift = Integer.parseInt(s.nextLine());
-                    changedMessage = message.caesarCipherEncoder(shift);
+                    changedMessage = originalMessage.caesarCipherEncoder(shift);
                     cipher = "Caesar Cipher";
                 }
-                History entry = new History(changedMessage, "Encryption", cipher, changedMessage);
+                System.out.println();
+                System.out.println("Encrypted message: " + changedMessage);
+                History entry = new History(message, "Encryption", cipher, changedMessage);
                 
             }
             if(nextAction == 2)
@@ -45,6 +50,26 @@ public class Main {
                 System.out.println("  '1' for atbash");
                 System.out.println("  '2' for caesar cipher");
                 cipherNumber = Integer.parseInt(s.nextLine());
+                System.out.println();
+                System.out.print("Enter the message you want to encrypt: ");
+                String message = s.nextLine();
+                Decoder originalMessage = new Decoder(message);
+                System.out.println();
+                if(cipherNumber == 1)
+                {
+                    changedMessage = originalMessage.atbashDecoder();
+                    cipher = "Atbash";
+                }
+                if(cipherNumber == 2)
+                {
+                    System.out.print("Enter the number of letters you want to shift by: ");
+                    int shift = Integer.parseInt(s.nextLine());
+                    changedMessage = originalMessage.caesarCipherDecoder(shift);
+                    cipher = "Caesar Cipher";
+                }
+                System.out.println();
+                System.out.println("Decrypted message: " + changedMessage);
+                History entry = new History(message, "Decryption", cipher, changedMessage);
             }
             if(nextAction == 3)
             {
