@@ -1,17 +1,20 @@
 import java.util.Scanner;
 import java.util.Arrays;
+import java.util.ArrayList;
 public class Main {
     public static void main(String[] args)
     {
         Scanner s = new Scanner(System.in);
+        System.out.println("This program is designed to allow the user to choose different ciphers to encrypt and decrypt their messages.");
+        System.out.println();
         int nextAction = 0;
         String changedMessage = "";
         int cipherNumber = 0;
         String cipher = "";
-        String[] history = {};
+        ArrayList<History> programHistory = new ArrayList<History>();
         for (int i = 0; nextAction != 4; i = i)
         {
-            System.out.println("Enter:");
+            System.out.println("Enter");
             System.out.println("  '1' to encrypt message");
             System.out.println("  '2' to decrypt message");
             System.out.println("  '3' to see history of previous encrypted / decrypted messages");
@@ -19,7 +22,7 @@ public class Main {
             nextAction = Integer.parseInt(s.nextLine());
             if(nextAction == 1)
             {
-                System.out.println("Enter:");
+                System.out.println("Enter");
                 System.out.println("  '1' for atbash");
                 System.out.println("  '2' for caesar cipher");
                 System.out.println("  '3' for morse code");
@@ -48,11 +51,12 @@ public class Main {
                 }
                 System.out.println();
                 System.out.println("Encrypted message: " + changedMessage);
-                History entry = new History(message, "Encryption", cipher, changedMessage);
+                History newHistory = new History(message, "Encryption", cipher, changedMessage);
+                programHistory.add(newHistory);
             }
             if(nextAction == 2)
             {
-                System.out.println("Enter:");
+                System.out.println("Enter");
                 System.out.println("  '1' for atbash");
                 System.out.println("  '2' for caesar cipher");
                 cipherNumber = Integer.parseInt(s.nextLine());
@@ -75,11 +79,12 @@ public class Main {
                 }
                 System.out.println();
                 System.out.println("Decrypted message: " + changedMessage);
-                History entry = new History(message, "Decryption", cipher, changedMessage);
+                History newHistory = new History(message, "Decryption", cipher, changedMessage);
+                programHistory.add(newHistory);
             }
             if(nextAction == 3)
             {
-                System.out.println(Arrays.toString(history));
+
             }
         }
         System.out.println("This program has stopped running.");
