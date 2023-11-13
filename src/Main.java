@@ -1,7 +1,8 @@
 import java.util.Scanner;
 import java.util.Arrays;
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         Scanner s = new Scanner(System.in);
         int nextAction = 0;
         String changedMessage = "";
@@ -21,6 +22,7 @@ public class Main {
                 System.out.println("Enter:");
                 System.out.println("  '1' for atbash");
                 System.out.println("  '2' for caesar cipher");
+                System.out.println("  '3' for morse code");
                 cipherNumber = Integer.parseInt(s.nextLine());
                 System.out.println();
                 System.out.print("Enter the message you want to encrypt: ");
@@ -39,10 +41,14 @@ public class Main {
                     changedMessage = originalMessage.caesarCipherEncoder(shift);
                     cipher = "Caesar Cipher";
                 }
+                if(cipherNumber == 3)
+                {
+                    changedMessage = originalMessage.morseCodeEncoder();
+                    cipher = "Morse Code";
+                }
                 System.out.println();
                 System.out.println("Encrypted message: " + changedMessage);
                 History entry = new History(message, "Encryption", cipher, changedMessage);
-                
             }
             if(nextAction == 2)
             {

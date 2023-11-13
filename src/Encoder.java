@@ -4,7 +4,7 @@ public class Encoder
 
     public Encoder(String originalMessage)
     {
-        this.originalMessage = originalMessage;
+        this.originalMessage = originalMessage.toUpperCase();
     }
 
     public String atbashEncoder()
@@ -62,6 +62,50 @@ public class Encoder
             {
                 int shiftedLetterIndex = (arrayIndex + shift) % 26;
                 encryptedMessage = encryptedMessage + originalLetters[shiftedLetterIndex];
+            }
+        }
+        return encryptedMessage;
+    }
+
+    public String morseCodeEncoder()
+    {
+        String encryptedMessage = "";
+        String[] originalCharacters = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", ",", "?", "\'", "!", "/", "(", ")", "&", ":", ";", "=", "+", "-", "_", "\"", "$", "@"};
+        String[] encryptedCharacters = {".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--..", ".----", "..---", "...--", "....-", ".....", "-....", "--...", "---..", "----.", "-----", ".-.-.-", "--..--", "..--..", ".----.", "-.-.--", "-..-.", "-.--.", "-.--.-", ".-...", "---...", "-.-.-.", "-...-", ".-.-.", "-....-", "..--.-", ".-..-.", "...-..-", ".--.-."};
+        for(int index = 0; index < originalMessage.length(); index++)
+        {
+            String character = originalMessage.substring(index, index + 1);
+            int arrayIndex = 0;
+            boolean isCharacter = false;
+            for(int i = 0; i < 54; i++)
+            {
+                if(originalCharacters[i].equals(character))
+                {
+                    arrayIndex = i;
+                    isCharacter = true;
+                }
+            }
+            if(character.equals(" "))
+            {
+                encryptedMessage = encryptedMessage + "xx";
+            }
+            else if(isCharacter == false)
+            {
+                encryptedMessage = encryptedMessage + "x" + character;
+            }
+            else
+            {
+                if(index == 0) {
+                    encryptedMessage = encryptedCharacters[arrayIndex];
+                }
+                else if(originalMessage.substring(index - 1, index).equals(" "))
+                {
+                    encryptedMessage = encryptedMessage + encryptedCharacters[arrayIndex];
+                }
+                else
+                {
+                    encryptedMessage = encryptedMessage + "x" + encryptedCharacters[arrayIndex];
+                }
             }
         }
         return encryptedMessage;
