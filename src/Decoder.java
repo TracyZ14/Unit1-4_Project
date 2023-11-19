@@ -46,7 +46,7 @@ public class Decoder
             String letter = originalMessage.substring(index, index + 1);
             int arrayIndex = 0;
             boolean isLetter = false;
-            for(int i = 0; i < 25; i++)
+            for(int i = 0; i < 26; i++)
             {
                 if(originalLetters[i].equals(letter))
                 {
@@ -60,7 +60,11 @@ public class Decoder
             }
             else
             {
-                int shiftedLetterIndex = 26 - Math.abs((arrayIndex - shift) % 26);
+                int shiftedLetterIndex = (arrayIndex - shift) % 26;
+                while(shiftedLetterIndex <= 0)
+                {
+                    shiftedLetterIndex = (26 - Math.abs(shiftedLetterIndex)) % 26;
+                }
                 decryptedMessage = decryptedMessage + originalLetters[shiftedLetterIndex];
             }
         }
