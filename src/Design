@@ -2,21 +2,62 @@ Encoder class
 Instance variables:
 1. private String originalMessage -> message before encryption
 Constructors:
-1. public Encoder(String originalMessage)
-   Initialize the private String variable originalMessage to the value of the parameter.
+1. public Encoder(String originalMessage) -> creates new instance of Encoder
+   Parameter:
+      - String originalMessage -> message before encryption in uppercase
 Methods:
-1. public String atbashEncoder()
-   Initialize the String encryptedMessage as an empty String.
-   Initialize the array originalLetters with all the letters in uppercase in alphabetical order for the elements.
-   Initialize the array encryptedLetters with all the letters in uppercase in the reverse of alphabetical order for the elements.
-   Use a for loop with the initialization int index = 0, the test condition index is less than the length of the String originalMessage, and the increment of 1 to index every loop.
-      Initialize the String letter as the substring of the String originalMessage with the beginning index as index and the end index as index plus 1.
-      Initialize the int arrayIndex to 0.
+1. public String atbashEncoder() -> encrypt the message using the atbash cipher
+   Return value: a String of the message after being encrypted using atbash
+2. public String caesarCipherEncoder(int shift) -> encrypt the message using the caesar cipher given the number of shift
+   Parameter:
+      - int shift -> how many letters the alphabet should be shifted
+   Return value: a String of the message after being encrypted using caesar cipher
+3. public String morseCodeEncoder() -> encrypt the message using morse code
+   Return value: a String of the message after being encrypted using morse code
 
 
 Decoder class
 Instance variables:
 1. private String originalMessage -> message before decryption
 Constructors:
-1. public Decoder(String originalMessage)
-   Initialize the private String variable original Message to the value of the parameter.
+1. public Decoder(String originalMessage) -> creates new instance of Decoder
+   Parameter:
+      - String originalMessage -> message before decryption in uppercase
+Methods:
+1. public String atbashDecoder() -> decrypt the message using the atbash cipher
+   Return value: a String of the message after being decrypted using atbash
+2. public String caesarCipherDecoder() -> decrypt the message using the caesar cipher given the number of shift
+   Parameter:
+      - int shift -> how many letters the alphabet should be shifted
+   Return value: a String of the message after being decrypted using caesar cipher
+
+
+History class
+Instance variables:
+1. private String originalMessage -> message before encryption or decryption
+2. private String encryptionDecryption -> whether the message was encrypted or decrypted
+3. private String cipherUsed -> cipher used in the encryption or decryption
+4. private String changedMessage -> message after it was encrypted or decrypted
+Constructors:
+1. public History(String originalMessage, String encryptionDecryption, String cipherUsed, String changedMessage) -> creates new instance of History
+Methods:
+1. public String getOriginalMessage() -> return only the originalMessage of the History object
+   Return value: a String representing the original message before encryption or decryption
+2. public String getEncryptionDecryption() -> return only the encryptionDecryption of the History object
+   Return value: a String representing the whether the message was encrypted or decrypted
+3. public String getCipherUsed() -> return only the cipherUsed of the History object
+   Return value: a String representing the cipher used in the encryption or decryption
+4. public String getChangedMessage() -> return only the changedMessage of the History object
+   Return value: a String representing the message after it was encrypted or decrypted
+
+
+EncoderDecoderRunner class
+1. Import Scanner and ArrayList
+2. Explain the purpose of the program
+3. Create the arraylist programHistory that stores History objects
+4. Ask the user what they want the program to do next repeatedly until they input one of the choices
+5. If the user inputs 1 or 2, the program asks the user what cipher they want to use repeatedly until they input one of the choices, ask for the message, print the encryption / decryption, and add the information to programHistory
+6. If the user inputs 3, the program prints the information in programHistory
+7. If the user inputs 4, the program ask the user for what cipher they want to learn more about repeatedly until they input one of the choices, and print the introductions of the ciphers
+8. Step 4 is repeated until the user inputs 5
+9. If the user inputs 5, the program stops running

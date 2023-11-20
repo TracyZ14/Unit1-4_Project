@@ -1,12 +1,23 @@
+/**
+ * The Decoder class represents decryption. A decryption has the original message.
+ */
 public class Decoder
 {
     public String originalMessage;
 
+    /**
+     * Constructor for the Decoder class. This creates a new instance of a Decoder given the below parameter.
+     * @param originalMessage represents the message before decryption.
+     */
     public Decoder(String originalMessage)
     {
         this.originalMessage = originalMessage.toUpperCase();
     }
 
+    /**
+     * The atbashDecoder method for the Decoder class. This method will decrypt the message using the atbash cipher.
+     * @return a String of the message after being decrypted using atbash.
+     */
     public String atbashDecoder()
     {
         String decryptedMessage = "";
@@ -37,6 +48,11 @@ public class Decoder
         return decryptedMessage;
     }
 
+    /**
+     * The caesarCipherDecoder method for the Decoder class. This method will decrypt the message using the caesar cipher given the number of shift.
+     * @param shift an integer representing how many letters the alphabet should be shifted.
+     * @return a String of the message after being decrypted using caesar cipher.
+     */
     public String caesarCipherDecoder(int shift)
     {
         String decryptedMessage = "";
@@ -71,6 +87,13 @@ public class Decoder
         return decryptedMessage;
     }
 
+    // Does not work.
+    /*
+     /**
+     * The morseCodeDecoder method for the Decoder class. This method will decrypt the message using morse code.
+     * @return a String of the message after being decrypted using morse code.
+     */
+    /*
     public String morseCodeDecoder()
     {
         String decryptedMessage = "";
@@ -87,19 +110,19 @@ public class Decoder
                 {
                     characterAfterX = originalMessage.substring(index + 1);
                 }
-                if(originalMessage.length() > (index + 1))
+                else
                 {
-                    characterAfterX = originalMessage.substring(index + 1,index + 2);
+                    characterAfterX = originalMessage.substring(index + 1, index + 2);
                 }
                 if(characterAfterX.equals("x"))
                 {
                     originalMessage = originalMessage.substring(index + 2);
                     decryptedMessage = decryptedMessage + " ";
                 }
-                if(!characterAfterX.equals("x"))
+                else
                 {
-                    originalMessage = originalMessage.substring(index + 2);
-                    decryptedMessage = decryptedMessage + " ";
+                    originalMessage = originalMessage.substring(index + 1);
+                    decryptedMessage = decryptedMessage;
                 }
             }
             else
@@ -107,11 +130,11 @@ public class Decoder
                 if(originalMessage.contains("x"))
                 {
                     endIndex = originalMessage.indexOf("x");
-                    morseCodeCharacter = originalMessage.substring(index, endIndex);
+                    morseCodeCharacter = originalMessage.substring(0, endIndex);
                 }
                 else
                 {
-                    morseCodeCharacter = originalMessage.substring(index);
+                    morseCodeCharacter = originalMessage;
                 }
                 int arrayIndex = 0;
                 for (int i = 0; i < 54; i++)
@@ -126,4 +149,5 @@ public class Decoder
         }
         return decryptedMessage;
     }
+    */
 }

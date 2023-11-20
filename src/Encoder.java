@@ -1,12 +1,23 @@
+/**
+ * The Encoder class represents encryption. An encryption has the original message.
+ */
 public class Encoder
 {
     private String originalMessage;
 
+    /**
+     * Constructor for the Encoder class. This creates a new instance of an Encoder given the below parameter.
+     * @param originalMessage represents the message before encryption.
+     */
     public Encoder(String originalMessage)
     {
         this.originalMessage = originalMessage.toUpperCase();
     }
 
+    /**
+     * The atbashEncoder method for the Encoder class. This method will encrypt the message using the atbash cipher.
+     * @return a String of the message after being encrypted using atbash.
+     */
     public String atbashEncoder()
     {
         String encryptedMessage = "";
@@ -37,6 +48,11 @@ public class Encoder
         return encryptedMessage;
     }
 
+    /**
+     * The caesarCipherEncoder method for the Encoder class. This method will encrypt the message using the caesar cipher given the number of shift.
+     * @param shift an integer representing how many letters the alphabet should be shifted.
+     * @return a String of the message after being encrypted using caesar cipher.
+     */
     public String caesarCipherEncoder(int shift)
     {
         String encryptedMessage = "";
@@ -67,6 +83,10 @@ public class Encoder
         return encryptedMessage;
     }
 
+    /**
+     * The morseCodeEncoder method for the Encoder class. This method will encrypt the message using morse code.
+     * @return a String of the message after being encrypted using morse code.
+     */
     public String morseCodeEncoder()
     {
         String encryptedMessage = "";
